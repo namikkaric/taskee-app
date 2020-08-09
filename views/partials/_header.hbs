@@ -1,0 +1,27 @@
+<nav class="main-header">
+    <div class="nav-wrapper container">
+
+        <a href="#!" class="brand-logo center">Taskee</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger show-on-large"><i class="fas fa-bars"></i></a>
+        
+        <ul class="sidenav" id="mobile-demo">
+            <div class="section show-info">
+            <p class="profile">{{name}}</p>
+            <p class="profile">{{email}}</p>
+            </div>
+
+            <div id="dashboard-nav" class="a-dashboard sidenav-edit">
+                <li><a id="a-dashboard" class="a-sidenav" href="/dashboard"><i id="i-dashboard" class="fas fa-user-cog ds-icon"></i>Dashboard</a></li>
+            </div>
+
+            <div id="lists-nav" class="a-dashboard sidenav-edit">
+                <li><a id="a-lists" class="a-sidenav" href="/lists"><i id="i-lists" class="far fa-list-alt ds-icon"></i>Lists</a></li>
+            </div>
+
+            <div id="logout-nav" class="a-dashboard sidenav-edit">
+                <li><a id="a-logout" class="a-sidenav" href="/users/logout"><i id="i-logout" class="fas fa-sign-out-alt ds-icon"></i>Log Out</a></li>
+            </div>
+
+        </ul>
+    </div>
+</nav>

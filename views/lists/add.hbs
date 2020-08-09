@@ -1,0 +1,151 @@
+
+      <div class="section error-section">
+        {{# if success_msg}}
+        <div class="success-msg">
+            <i class="fa fa-check"></i>
+            {{success_msg}}
+            <i class="fas fa-times error-msg-close"></i>
+        </div>
+        {{/if}}
+      {{# if errors }}
+        {{# each errors }}
+        <div class="error-msg">
+          <i class="fa fa-times-circle"></i>
+            {{ this.msg }}
+          <i class="fas fa-times error-msg-close"></i>
+        </div>
+      {{/each}}
+      {{/if}}
+      </div>
+
+<h3>Add New List</h3>
+<div class="row">
+    <form action="/lists" method="POST" class="col s12" id="form-a">
+        <div class="row">
+            <div class="input-field">
+                <input maxlength="50" type="text" id="title" name="title">
+                <label for="title">Title</label>
+            </div>
+        </div>
+        
+       <div class="row">
+            <div class="input-field">
+                <h3>Enter to-do item</h3>
+                <input maxlength="80" id="nesto" type="text" name="nesto" placeholder="Enter to-do item">
+                <input type="button" class="btn" id="btn-add" value="Add Item" onclick="buttonClick()">
+                    <select name="body" id="body">
+                    </select>
+                    <div id="show-items">
+                        <ul id="lista" name="lista"></ul>
+                    </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <input id="btn-add" type="submit" value="Save" class="btn">
+            <a href="/lists" id="btn-cancel" class="btn">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<script>
+
+    // Displaying and animating validation messages
+    var errorMsgClose = document.querySelectorAll('.error-msg-close');
+
+    function closeMessage(i) {
+        setTimeout(() => {
+
+            if(errorMsgClose[i].parentNode.classList.contains('hidden')) {
+                errorMsgClose[i].parentNode.classList.remove('hidden')
+
+                setTimeout(() => {
+                    errorMsgClose[i].parentNode.classList.remove('visuallyhidden')
+                }, 20)
+            } else {
+                errorMsgClose[i].parentNode.classList.add('visuallyhidden')
+                errorMsgClose[i].parentNode.addEventListener('transitionend', function(e) {
+                    errorMsgClose[i].parentNode.classList.add('hidden');
+                    }, {
+                    capture: false,
+                    once: true,
+                    passive: false
+                });
+            }
+            //errorMsgClose[i].parentNode.style.display = "none";
+        }, 1000 * i + (10000 - (i * 200)))
+    }
+
+    errorMsgClose.forEach((item, index) => {
+        item.onclick = function(e) {
+        e.stopPropagation();
+        this.parentNode.style.display = "none";
+        }
+        closeMessage(index)
+    })
+
+    // Navbar active
+    var dashboard = document.getElementById('lists-nav');
+    var linkDashboard = document.getElementById('a-lists');
+    var iconDashboard = document.getElementById('i-lists');
+
+    dashboard.classList.remove('sidenav-edit');
+    dashboard.classList.add('sidenav-edit-active');
+
+    linkDashboard.classList.remove('a-sidenav');
+    linkDashboard.classList.add('a-sidenav-active');
+
+    iconDashboard.classList.remove('ds-icon');
+    iconDashboard.classList.add('ds-icon-active');
+    
+    var parentNodeValue;
+
+    // Enable adding items with 'Enter' key
+    document.getElementById('nesto').onkeypress=function(e){
+        if(e.keyCode==13){
+            document.getElementById('btn-add').click();
+            return false;
+        }
+    }
+
+    // Button click function for adding to-do items
+    function buttonClick() {
+        
+        var w1 = document.getElementById('nesto').value;
+        if(w1 !== '') {
+        var w = w1;
+
+        var input = document.createElement("input");
+        var li = document.createElement("li");
+        input.append(w);
+        li.append(w);
+        input.setAttribute('type', 'hidden');
+        input.setAttribute('name', 'body');
+        input.setAttribute('value', w);
+
+        var removeBtn = document.createElement("input");
+        removeBtn.type = "button";
+        removeBtn.value = "X";
+        removeBtn.classList.add('btn');
+        removeBtn.classList.add('remove-btn');
+        removeBtn.onclick = remove;
+        li.append(removeBtn);
+        document.getElementById("body").append(input);
+        document.getElementById('lista').append(li);
+        
+    }
+    document.getElementById('nesto').value = '';
+}
+
+    function remove(e) {
+    var el = e.target;
+    parentNodeValue = el.parentNode.innerText;
+    var items = document.querySelectorAll("input[name='body']");
+        for(var i = 0; i < items.length; i++) {
+           if(items[i].value == parentNodeValue) {
+               items[i].remove();
+           }
+        }
+    el.parentNode.remove();
+    }
+</script>

@@ -1,0 +1,21 @@
+<h1>404 Not Found</h1>
+<p>We're sorry, this resource is not found</p>
+<a href="/dashboard" class="btn dashboard-404">Go to Dashboard</a>
+
+<script>
+    window.onload = (event) => {
+
+    var dashboard = document.getElementById('dashboard-nav');
+    var linkDashboard = document.getElementById('a-dashboard');
+    var iconDashboard = document.getElementById('i-dashboard');
+
+    dashboard.classList.remove('sidenav-edit');
+    dashboard.classList.add('sidenav-edit-active');
+
+    linkDashboard.classList.remove('a-sidenav');
+    linkDashboard.classList.add('a-sidenav-active');
+
+    iconDashboard.classList.remove('ds-icon');
+    iconDashboard.classList.add('ds-icon-active');
+};
+</script>

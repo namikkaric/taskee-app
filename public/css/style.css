@@ -1,0 +1,698 @@
+* {
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline:none !important
+}
+
+body {
+    background-color: #272b34;
+    color: #ffffff;
+}
+
+p {
+    margin: 10px 0 !important;
+}
+
+/* Header */
+.main-header {
+    background-color: #21242c !important;
+}
+
+/* Sidenav */
+.a-sidenav-active {
+    color: #1ef57c !important;
+    display:inline-block !important;
+    width: 100% !important;
+    height: 100% !important;
+    font-size: 14px !important;
+}
+
+.a-sidenav-active:hover {
+    background-color: #272b34 !important;
+}
+
+.a-sidenav {
+    color: #a1a1a1 !important;
+    font-size: 14px !important;
+    width: 100%;
+    height: 100%;
+}
+
+.a-sidenav:hover {
+    background-color: #21242c !important;
+}
+
+.sidenav {
+    background-color: #21242c !important;
+    color: #ffffff !important;
+}
+
+.sidenav-edit li {
+    margin-bottom: 20px !important;
+    padding-top: 18px;
+    height: 80px;
+}
+
+.sidenav-edit-active li {
+    border-right: 5px solid #1ef57c;
+    margin-bottom: 20px !important;
+    padding-top: 18px;
+    height: 80px;
+    color: #1ef57c !important;
+    background-color: #272b34 !important;
+}
+
+.show-info {
+    color: black;
+    flex-grow: 1;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    flex-direction: column;
+    margin-top: 40px;
+    margin-bottom: 110px;
+}
+
+.ds-icon {
+    color: #a1a1a1 !important;
+    font-size: 33px;
+    margin-right: 30px !important;
+}
+
+.ds-icon-active {
+    color: #1ef57c !important;
+    font-size: 33px;
+    margin-right: 30px !important;
+}
+
+.profile {
+    color: #ffffff !important;
+    text-align: center;
+}
+
+.a-dashboard {
+    text-align: center;
+}
+
+/* Register form */
+.register-form {
+    width: 450px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Login form */
+.login-form {
+    width: 450px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+.login-container {
+    width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.btn-registerLogin {
+    font-size: 15px;
+    margin-left: 60px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #0cce61 !important;
+}
+
+.a-back {
+    font-size: 17px;
+    color: #ffffff !important;
+}
+
+.a-alhaccount {
+    font-size: 16px;
+    color: #0cce61 !important;
+}
+
+.card-edit {
+    background-color: #21242c;
+}
+
+/* Dashboard */
+.card-icon-dashboard {
+    font-size: 45px; 
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#container-dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+div.card-dashboard {
+    background-color: #21242c !important;
+}
+
+div.card-dashboard:focus {
+    background-color: #21242c !important;
+}
+
+div.card-dashboard:active {
+    background-color: #21242c !important;
+}
+
+div.card-dashboard:link {
+    background-color: #21242c !important;
+}
+
+div.card-dashboard:visited {
+    background-color: #21242c !important;
+}
+
+div.card-dashboard:hover {
+    cursor: pointer;
+    background-color: #1f222a !important;
+}
+
+/* Dashboard/List Settings */
+.i-list-delete {
+    float: right;
+    margin-left: 17px;
+}
+
+.table-padding {
+    padding-left: 10px;
+}
+
+.table-td {
+    float: right; 
+    margin-right: 30px;
+}
+
+#table-body {
+    background-color: #21242c;
+}
+
+#btn-delete {
+    background-color: transparent;
+    border: 0;
+}
+
+#btn-delete:hover {
+    cursor: pointer;
+}
+
+/* Dashboard/Account Settings */
+.h3-account-settings {
+    margin: 0 0 10px 0;
+}
+
+/* Lists */
+#a-edit {
+    color: #ffffff !important;
+    background-color: #1f222a;
+    box-shadow: none;
+    float: right !important;
+    margin-left: 20px !important;
+}
+
+#a-list-id {
+    visibility: hidden;;
+}
+
+.info-message {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border:1px solid #1ef57c;
+    border-radius: 10px;
+}
+
+.h3-info-message {
+    margin: 10px;
+    color: #1ef57c;
+    font-size: 45px;
+}
+
+.h2-info-message {
+    color: #ffffff;
+    font-size: 30px;
+    margin: 35px 13px;
+    margin: 35px 13px 30px 13px;
+}
+
+.p-info-message {
+    color: #ffffff;
+    font-size: 17px;
+    margin-left: 13px !important;
+}
+
+#list-count {
+    color: #ffb227;
+    font-size: 40px;
+}
+
+#task-count {
+    color: #ed3939;
+    font-size: 40px;
+}
+
+#span-status {
+    float: right;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50px;
+    justify-content: center;
+    text-align: center;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.spanTitle {
+    font-size: 18px; 
+    margin-left: -25px;
+}
+
+.statusinfo {
+    margin-left: 110px;
+}
+
+.list-date {
+    margin-left: 110px;
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+    background-color: #1f222a;
+    color: #ffffff !important;
+    cursor: pointer;
+    padding: 14px;
+    width: 90%;
+    border: none;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    font-size: 16px;
+}
+
+.collapsible:focus {
+    background-color: #1f222a !important;
+    outline: none;
+}
+
+/* Style the collapsible content */
+.content {
+    padding: 0 18px;
+    display: none;
+    width: 80%;
+    overflow: hidden;
+    color: #ffffff !important;
+    background-color: #1f222a;
+}
+
+#card {
+    margin-bottom: 30px;
+}
+
+#collapsible-icons {
+    font-size: 22px;
+    color: #ffffff;
+    float: right !important;
+}
+
+#body-span {
+    color: #adafb3;
+    font-size: 22px;
+}
+
+.edit-button {
+    background-color: #0cce61 !important;
+}
+
+#a-delete {
+    float: right !important;
+    margin-left: 17px;
+}
+
+/* Sweetalert custom CSS */
+
+.swal-button--confirm, .swal-button--confirm:focus {
+    background-color: #ed3939 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+}
+
+.swal-button--cancel, .swal-button--cancel:focus {
+    color: #000000;
+    background-color: #efefef;
+    outline: none !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+}
+
+.swal-modal {
+    background-color: #1f222a !important;
+    color: #ffffff !important; 
+}
+
+.swal-title, .swal-text {
+    color: #ffffff !important;
+}
+
+.swal-modal:active, .swal-modal:focus {
+    border: none !important;
+    outline: 0 !important;
+}
+
+.swal-footer {
+    text-align: center !important;
+}
+
+/* Validation messages */
+.error-msg {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 3px 3px 3px 3px;
+    color: #D8000C;
+    background-color: #FFBABA;
+    transition: all 0.5s linear;
+    display: block;
+}
+
+.error-msg-close {
+    float: right !important;
+    font-size:18px;
+    margin-top: 1px;
+    margin-right: 20px;
+    cursor: pointer"
+}
+
+.success-msg {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 3px 3px 3px 3px;
+    color: #270;
+    background-color: #DFF2BF;
+    transition: all 0.5s linear;
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.visuallyhidden {
+    opacity: 0;
+}
+
+#list {
+    float: left;
+    display: flex;
+    flex-direction: column;
+}
+
+#show-items button {
+    width: 100%;
+}
+
+#show-items ul li {
+    padding-bottom: 18px;
+}
+
+select#body {
+    display: none;
+}
+
+#p-card-content {
+    margin-left: 30px;
+}
+
+/* Buttons */
+#btn-add {
+    background-color: #0cce61 !important;
+}
+
+#btn-cancel {
+    background-color: #ed3939;
+}
+
+.remove-btn {
+    margin-left: 20px;
+    background-color: #ed3939 !important;
+    float: right;
+}
+
+.remove-btn:hover {
+    background-color: #ed3939;
+}
+
+.remove-btn:focus, .remove-btn:active {
+    box-shadow: none !important;
+    border-bottom: none !important;
+}
+
+/* Input styling*/
+input {
+    background-color: transparent !important;
+}
+
+input:focus, input:active {
+    border-bottom: 1px solid #0cce61 !important;
+    box-shadow: 0 1px 0 0 #0cce61 !important;
+}
+
+.input-field input[type=password]:focus + label,
+.input-field input[type=email]:focus + label,
+.input-field input[type=text]:focus + label {
+    color: #0cce61 !important;
+}
+
+.input-field [type=text], [type=password], [type=email] {
+    color: white;
+}
+  
+/* Circle */  
+.container-circle {
+    float: left !important;
+    margin-left: 10px;
+}
+
+.sonar-wrapper {
+    position: relative;
+    z-index: 0;
+}
+  
+.sonar-emitter {
+    position: relative;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 9999px;
+    background-color: hsl(0,83.3%,57.6%);
+}
+  
+.sonar-wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 9999px;
+    background-color: hsl(0,83.3%,57.6%);
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+  
+.sonar-wave {
+    animation: sonarWave 2s linear infinite;
+}
+  
+@keyframes sonarWave {
+    from {
+      opacity: 0.4;
+    }
+    to {
+      transform: scale(3);
+      opacity: 0;
+    }
+}
+
+/* Checkbox */
+[type="checkbox"].filled-in:checked+span:not(.lever):after {
+    border: 2px solid #0cce61;
+    background-color: #0cce61;
+}
+
+.dashboard-404 {
+    background-color: #0cce61 !important;
+}
+
+/* Transparent background input autofill */ 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-animation: autofill 0s forwards;
+    animation: autofill 0s forwards;
+}
+  
+@keyframes autofill {
+    100% {
+        background: transparent;
+        color: inherit;
+    }
+}
+  
+@-webkit-keyframes autofill {
+    100% {
+        background: transparent;
+        color: inherit;
+    }
+}
+
+/* Media queries */
+@media only screen and (max-width: 668px) {
+    .spanTitle {
+      margin-left: -30px;
+    }
+
+    #collapsible-icons {
+        font-size: 17px !important;
+    }
+
+    .bar-icon {
+        display: none;
+    }
+
+    .statusinfo {
+        margin-left: 80px;
+    }
+    
+    .list-date {
+        margin-left: 0px;
+    }
+
+    #container-dashboard  {
+        margin-top: 50px;
+    }
+
+    .login-form {
+        width: 350px;
+    }
+
+    .register-form {
+        width: 300px;
+        margin-top: 20px;
+    }
+
+    .btn-registerLogin {
+        width: 120px;
+    }
+
+    .a-back {
+        font-size: 17px;
+    }
+
+    .h3-info-message {
+        font-size: 35px;
+    }
+
+    .h2-info-message {
+        font-size: 23px;
+    }
+
+    #list-count {
+        font-size: 30px;
+    }
+    
+    #task-count {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 568px) {
+    .login-form {
+        width: 310px;
+    }
+
+    .register-form {
+        width: 300px;
+    }
+
+    .spanTitle {
+        margin-left: -30px;
+    }
+
+    .statusinfo {
+        margin-top: 20px;
+        margin-left: 0px;
+    }
+    
+    .list-date {
+        margin-left: 0px;
+    }
+
+    .show-info {
+        margin-top: 10px;
+        margin-bottom: 40px;
+    }
+
+    .sidenav {
+        width: 80% !important;
+    }
+
+    .a-sidenav, .a-sidenav-active {
+        font-size: 12px !important;
+    }
+
+    .ds-icon, .ds-icon-active {
+        font-size: 27px !important;
+    }
+}
+
+/* ----------- Non-Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    .show-info {
+        margin-bottom: 20px;
+    }
+}
+
+/* ----------- Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (min-resolution: 192dpi) { 
+}

@@ -1,0 +1,226 @@
+<div class="info-message">
+    <h3 class="h3-info-message">Hello {{name}}!</h3>
+    <p class="p-info-message">Lets get started with your day.</p>
+
+    <h2 class="h2-info-message">You have created <span id="list-count">0</span> lists and have <span id="task-count">0</span> 
+    tasks to complete</h2>
+</div>
+<div class="flex-container">
+    {{#each lists}}
+        <div class="flex-row">
+            <button class="collapsible">
+                <div class="title-content">
+                    <span class="spanTitle">{{title}}</span>
+                    <div class="container-circle">
+                        <div class="sonar-wrapper">
+	                        <div class="sonar-emitter">
+                            <div class="sonar-wave"></div>
+                        </div>
+                    </div>
+                </div>
+
+            <form action="lists/{{_id}}" method="POST" id="delete-form">
+                <input type="hidden" name="_method" value="DELETE">
+                <a id="a-delete"><i id="collapsible-icons" class="fas fa-trash" onclick="submitForm(this)"></i></a>
+            </form>
+
+            <a href="lists/edit/{{_id}}" id="a-edit"><i id="collapsible-icons" class="fas fa-edit"></i></a>
+
+            <i id="collapsible-icons" style="font-size: 25px" class="fas fa-bars bar-icon"></i>
+
+            <div class="statusinfo"></div>
+            </div>
+            <div class="list-date">
+                {{formatDate createdAt 'LLL'}}
+            </div>
+            </button>
+            <div class="card content">
+                <div class="card-image">
+                </div>
+                <div id="card-content" class="card-content center-align">
+                    <h4 style="padding-bottom: 20px;">{{title}}</h4>
+                    {{#each body}}
+                        <p id="p-card-content">
+                            <label>
+                                <input id="list-checkbox" type="checkbox" class="filled-in" onclick="checkBox()"/>
+                                <span id="body-span">{{this}}</span>
+                            </label>
+                        </p>
+                    {{/each}}
+                    <div class="chip" style="display:none">
+                        <a id="a-user-id" value="{{user._id}}" href="/lists/user/{{user._id}}">{{user.name}}</a>
+                    </div>
+                </div>
+                <div class="center-align">
+                    <a id="a-list-id" value="{{_id}}" href="/lists/edit/{{_id}}" class="btn gray edit-button">Edit</a>
+                </div>
+            </div>
+        </div>
+    {{else}}
+        <p>No lists to display</p>
+    {{/each}}
+</div>
+
+<script>
+
+    // Navbar active
+    var dashboard = document.getElementById('lists-nav');
+    var linkDashboard = document.getElementById('a-lists');
+    var iconDashboard = document.getElementById('i-lists');
+
+    dashboard.classList.remove('sidenav-edit');
+    dashboard.classList.add('sidenav-edit-active');
+
+    linkDashboard.classList.remove('a-sidenav');
+    linkDashboard.classList.add('a-sidenav-active');
+
+    iconDashboard.classList.remove('ds-icon');
+    iconDashboard.classList.add('ds-icon-active');
+
+    // Confirmation dialog for list delete function
+    function sweetConfirm(question, text, callback) {
+        swal({
+        title: question,
+        text: text,
+        buttons: true,
+        }).then((confirmed) => {
+            if (confirmed) {
+                callback(true);
+            } else {
+                callback(false);
+            }
+        });
+    }
+
+    function submitForm(item) {
+        sweetConfirm('Delete list', 'Are you sure?', (confirmed) => {
+            if(confirmed){
+                item.parentNode.parentNode.submit();
+                return true;
+            } else {
+                return false;
+            }
+        })
+    }
+
+    var userID = document.getElementById('a-user-id').getAttribute('value');
+    var listID = document.getElementById('a-list-id').getAttribute('value');
+
+    // Collapse content box
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        })
+    }
+
+// On window load set proper settings
+window.onload = (event) => {
+
+    // List checkboxes
+    var statusinfo = document.querySelectorAll('.statusinfo');
+    var containerCircle = document.querySelectorAll('.container-circle');
+
+    // Load checkbox state
+    loadCheckboxState();
+
+    var cardContent = document.querySelectorAll("#card-content");
+    var countCheckBoxState = 0;
+
+    // Count checked state of checkboxes and change status message
+    for(var i = 0; i < cardContent.length; i++) {
+
+        var count = cardContent[i].querySelectorAll('input[type="checkbox"]')
+        count.forEach(function(item) {
+            if(item.checked) {
+                countCheckBoxState++;
+            }
+            if(count.length == countCheckBoxState) {
+                statusinfo[i].innerText = 'completed';
+            } else {
+                statusinfo[i].innerText = 'not-completed';
+            }
+        })
+        countCheckBoxState = 0;
+    }
+
+    // Set color of status
+    for(var i = 0; i < statusinfo.length; i++) {
+        if(statusinfo[i].innerText == 'not-completed') {
+            statusinfo[i].style.color = '#ff0000'
+        } 
+        else if(statusinfo[i].innerText == 'completed') {
+            statusinfo[i].style.color = '#008000'
+            containerCircle[i].style.visibility = 'hidden';
+        }
+        document.getElementById('list-count').innerText = statusinfo.length;
+    }
+};
+
+// Save checkbox state
+function checkBox() {
+
+    var listCheckbox = document.querySelectorAll('#list-checkbox');
+    var bodySpan = document.querySelectorAll('#body-span');
+    for(var i = 0; i < listCheckbox.length; i++) {
+        if(listCheckbox[i].checked) {
+            listCheckbox[i].classList.add('list-checkbox'+[i])
+            localStorage.setItem(`(${userID})list-checkbox${i}`, true)
+            bodySpan[i].style.textDecoration = "line-through";
+            bodySpan[i].style.color = "#1ff27b";
+        } else if(!(listCheckbox[i].checked)) {
+            localStorage.removeItem(`(${userID})list-checkbox${i}`)
+            bodySpan[i].style.textDecoration = "none";
+            bodySpan[i].style.color = "#adafb3";
+        }
+    }
+}
+
+// Load checkbox state
+function loadCheckboxState() {
+
+    var checkedCount = 0;
+    var listCheckbox = document.querySelectorAll('#list-checkbox');
+    var bodySpan = document.querySelectorAll('#body-span');
+    for(var i = 0; i < listCheckbox.length; i++) {
+        var checked = JSON.parse(localStorage.getItem(`(${userID})list-checkbox${i}`))
+        if(checked === true) { 
+            listCheckbox[i].checked = true;
+            checkedCount++;
+            bodySpan[i].style.textDecoration = "line-through";
+            bodySpan[i].style.color = "#1ff27b";
+        }
+        document.getElementById('task-count').innerText = listCheckbox.length - checkedCount;
+    }
+}
+
+    // Enable adding items with 'Enter' key
+    document.getElementById('a-edit').onclick=function(e) {
+        return false;
+    }
+
+    // Disable default action for edit dots
+    var editButton = document.querySelectorAll('#a-edit');
+    for(var i = 0; i < editButton.length; i++) {
+        editButton[i].onclick = function(e) {
+            e.stopPropagation();
+        }
+    }
+
+    // Disable default action for edit dots
+    var deleteButton = document.querySelectorAll('#a-delete');
+    for(var i = 0; i < deleteButton.length; i++) {
+        deleteButton[i].onclick = function(e) {
+            e.stopPropagation();
+        }
+    }
+
+</script>

@@ -1,0 +1,93 @@
+   <h2>Login</h2>
+      <div class="section error-section">
+          {{# if success_msg}}
+            <div class="success-msg">
+                <i class="fa fa-check"></i>
+                    {{success_msg}}
+                    <i class="fas fa-times error-msg-close"></i>
+            </div>
+          {{/if}}
+          {{# if error}}
+            <div class="error-msg">
+                <i class="fa fa-times-circle"></i>
+                    {{error}}
+                <i class="fas fa-times error-msg-close"></i>
+            </div>
+          {{/if}}
+      {{# if errors }}
+        {{# each errors }}
+        <div class="error-msg">
+          <i class="fa fa-times-circle"></i>
+            {{ this.msg }}
+          <i class="fas fa-times error-msg-close"></i>
+        </div>
+      {{/each}}
+      {{/if}}
+      </div>
+ 
+ <div class="container-login">
+ <form action="/users/login" method="POST" class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+          />
+          <label for="email">Email</label>
+        </div>
+         <div class="input-field col s12">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+          />
+          <label for="password">Password</label>
+		  <div class="input-field col s12">
+              <a class="a-back" href="/"><span><i class="fas fa-angle-left"></i></span> Back</a>
+			  <button type="submit" class="waves-effect waves-light btn btn-registerLogin">Log In</button>
+        </div>
+          <a href="/users/register" class="a-alhaccount">Don't have an account yet? <b>Sign Up</b></a>
+      </div>
+    </form>
+  </div>
+  </div>  
+
+  <script>
+
+    // Displaying and animating validation messages
+    var errorMsgClose = document.querySelectorAll('.error-msg-close');
+
+    function closeMessage(i) {
+        setTimeout(() => {
+
+            if(errorMsgClose[i].parentNode.classList.contains('hidden')) {
+                errorMsgClose[i].parentNode.classList.remove('hidden')
+
+                setTimeout(() => {
+                    errorMsgClose[i].parentNode.classList.remove('visuallyhidden')
+                }, 20)
+            } else {
+                errorMsgClose[i].parentNode.classList.add('visuallyhidden')
+                errorMsgClose[i].parentNode.addEventListener('transitionend', function(e) {
+                    errorMsgClose[i].parentNode.classList.add('hidden');
+                    }, {
+                    capture: false,
+                    once: true,
+                    passive: false
+                });
+            }
+            //errorMsgClose[i].parentNode.style.display = "none";
+        }, 1000 * i + (10000 - (i * 200)))
+    }
+
+    errorMsgClose.forEach((item, index) => {
+        item.onclick = function(e) {
+        e.stopPropagation();
+        this.parentNode.style.display = "none";
+        }
+        closeMessage(index)
+    })
+  </script>
